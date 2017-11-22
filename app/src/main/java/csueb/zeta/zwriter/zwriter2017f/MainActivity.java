@@ -1,6 +1,6 @@
 package csueb.zeta.zwriter.zwriter2017f;
 
-import android.graphics.Color;
+
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.PopupMenu;
@@ -45,16 +45,7 @@ public class MainActivity extends AppCompatActivity {
                 popupMenu.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
                     @Override
                     public boolean onMenuItemClick (MenuItem item) {
-                        if (item.getItemId()==R.id.backgroundcolor){
-                            int redColor;
-                            int greenColor;
-                            int blueColor;
-
-                            redColor = (int) (Math.random()*256);
-                            greenColor = (int) (Math.random()*256);
-                            blueColor = (int) (Math.random()*256);
-                            bg.setBackgroundColor(Color.rgb(redColor, greenColor, blueColor));
-                        }
+                        backgroundUtil.changeBackgroundColor(item, bg);
                         Toast.makeText(MainActivity.this, "" + item.getTitle(), Toast.LENGTH_SHORT).show();
                         return true;
                     }
