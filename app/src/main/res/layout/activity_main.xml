@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.wenjin.zwriter.csueb.example.wenjin.zwriter.MainActivity">
+
+    <Button
+        android:id="@+id/folder3"
+        android:layout_width="88dp"
+        android:layout_height="75dp"
+        android:layout_marginLeft="150dp"
+        android:layout_marginTop="45dp"
+        android:background="@mipmap/file_launcher"
+        android:text="T"
+        android:visibility="invisible"
+        app:layout_constraintLeft_toRightOf="@+id/folder1"
+        app:layout_constraintTop_toBottomOf="@+id/MenuBar"
+        android:layout_marginStart="150dp" />
+
+    <Button
+        android:id="@+id/folder2"
+        android:layout_width="88dp"
+        android:layout_height="75dp"
+        android:layout_marginLeft="32dp"
+        android:layout_marginTop="45dp"
+        android:background="@mipmap/file_launcher"
+        android:text="E"
+        android:visibility="invisible"
+        app:layout_constraintLeft_toRightOf="@+id/folder1"
+        app:layout_constraintTop_toBottomOf="@+id/MenuBar"
+        android:layout_marginStart="32dp" />
+
+    <Button
+        android:id="@+id/folder1"
+        android:layout_width="88dp"
+        android:layout_height="75dp"
+        android:layout_marginTop="45dp"
+        android:background="@mipmap/file_launcher"
+        android:text="Z"
+        android:visibility="invisible"
+        app:layout_constraintTop_toBottomOf="@+id/MenuBar"
+        tools:layout_editor_absoluteX="51dp" />
+
+    <Button
+        android:id="@+id/sort"
+        android:layout_width="188dp"
+        android:layout_height="63dp"
+        android:layout_marginTop="405dp"
+        android:autoText="false"
+        android:background="@android:drawable/alert_light_frame"
+        android:text="Sort"
+        app:layout_constraintEnd_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/MenuBar"
+        tools:layout_editor_absoluteX="196dp" />
+
+    <TextView
+        android:id="@+id/MenuBar"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:background="@android:drawable/bottom_bar"
+        android:textAlignment="center"
+        android:textColor="@android:color/black"
+        android:textSize="36sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <Button
+        android:id="@+id/setting"
+        android:layout_width="188dp"
+        android:layout_height="63dp"
+        android:layout_marginTop="405dp"
+        android:autoText="false"
+        android:background="@android:drawable/alert_light_frame"
+        android:text="Setting"
+        app:layout_constraintTop_toBottomOf="@+id/MenuBar"
+        tools:layout_editor_absoluteX="0dp" />
+
+    <Button
+        android:id="@+id/edit"
+        android:layout_width="55dp"
+        android:layout_height="55dp"
+        android:background="@mipmap/ic_launcher"
+        app:layout_constraintEnd_toStartOf="parent"
+        tools:layout_editor_absoluteX="329dp"
+        tools:layout_editor_absoluteY="0dp" />
+
+    <RelativeLayout
+        android:id="@+id/bg"
+        android:layout_width="376dp"
+        android:layout_height="457dp"
+        android:background="@android:color/holo_blue_bright"
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="53dp">
+
+    </RelativeLayout>
+
+
+</android.support.constraint.ConstraintLayout>
