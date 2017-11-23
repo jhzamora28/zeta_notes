@@ -48,7 +48,7 @@ public class dataManager {
             outputStream.close();
         } catch (IOException e) {
             e.printStackTrace();
-        } 
+        }
     }
 
     static final String AB = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
