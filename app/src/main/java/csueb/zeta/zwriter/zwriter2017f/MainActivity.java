@@ -19,6 +19,9 @@ public class MainActivity extends AppCompatActivity {
     RelativeLayout bg;
     Button sort;
     Button edit;
+    Button deleteFolder1;
+    Button deleteFolder2;
+    Button deleteFolder3;
     Button folder3;
     Button folder2;
     Button folder1;
@@ -32,6 +35,9 @@ public class MainActivity extends AppCompatActivity {
         bg = (RelativeLayout) findViewById(R.id.bg);
         sort = (Button) findViewById(R.id.sort);
         edit = (Button) findViewById(R.id.edit);
+        deleteFolder3 = (Button) findViewById(R.id.deleteFolder3);
+        deleteFolder2 = (Button) findViewById(R.id.deleteFolder2);
+        deleteFolder1 = (Button) findViewById(R.id.deleteFolder1);
         folder3 = (Button) findViewById(R.id.folder3);
         folder2 = (Button) findViewById(R.id.folder2);
         folder1 = (Button) findViewById(R.id.folder1);
@@ -82,31 +88,8 @@ public class MainActivity extends AppCompatActivity {
                 popupMenu.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
                     @Override
                     public boolean onMenuItemClick (MenuItem item) {
-                        if (item.getItemId()==R.id.create){
-
-                            if (folder1.getVisibility() == View.INVISIBLE){
-                                folder1.setVisibility(View.VISIBLE);
-                            }
-                            else if (folder1.getVisibility() == View.VISIBLE){
-                                folder2.setVisibility(View.VISIBLE);
-                            }
-                            else if (folder1.getVisibility() == View.VISIBLE && folder2.getVisibility() == View.VISIBLE){
-                                folder3.setVisibility(View.VISIBLE);
-                            }
-                        }
-
-                        //Delete
-                        if (item.getItemId()==R.id.delete){
-                            if (folder3.getVisibility() == View.VISIBLE){
-                                folder3.setVisibility(View.INVISIBLE);
-                            }
-                            else if (folder2.getVisibility() == View.VISIBLE){
-                                folder2.setVisibility(View.INVISIBLE);
-                            }
-                            else if (folder1.getVisibility() == View.VISIBLE){
-                                folder1.setVisibility(View.INVISIBLE);
-                            }
-                        }
+                        addFolder.createNewFolder(item, folder1,folder2,folder3);
+                        deleteFolder.removeFolder(item, deleteFolder3,deleteFolder2,deleteFolder1,folder3,folder2,folder1);
                         Toast.makeText(MainActivity.this, "" + item.getTitle(), Toast.LENGTH_SHORT).show();
                         return true;
                     }
@@ -117,7 +100,24 @@ public class MainActivity extends AppCompatActivity {
 
         });
 
+        deleteFolder1.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick (View view) {
+                PopupMenu popupMenu = new PopupMenu(MainActivity.this, deleteFolder1);
+                popupMenu.getMenuInflater().inflate(R.menu.deletemenu, popupMenu.getMenu());
+                popupMenu.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
+                    @Override
+                    public boolean onMenuItemClick (MenuItem item) {
+                        confirmation.confirm(item, folder1, deleteFolder1, deleteFolder2, deleteFolder3);
+                        Toast.makeText(MainActivity.this, "" + item.getTitle(), Toast.LENGTH_SHORT).show();
+                        return true;
+                    }
+                });
 
+                popupMenu.show();
+            }
+
+        });
 
 
     }

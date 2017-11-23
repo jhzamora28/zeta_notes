@@ -90,13 +90,51 @@
         tools:layout_editor_absoluteX="329dp"
         tools:layout_editor_absoluteY="0dp" />
 
+    <Button
+        android:id="@+id/deleteFolder1"
+        android:layout_width="39dp"
+        android:layout_height="39dp"
+        android:layout_marginRight="0dp"
+        android:layout_marginTop="45dp"
+        android:background="@mipmap/delete_launcher"
+        android:visibility="invisible"
+        app:layout_constraintRight_toRightOf="@+id/folder1"
+        app:layout_constraintTop_toBottomOf="@+id/MenuBar" />
+
+    <Button
+        android:id="@+id/deleteFolder2"
+        android:layout_width="39dp"
+        android:layout_height="39dp"
+        android:layout_marginRight="0dp"
+        android:layout_marginTop="45dp"
+        android:background="@mipmap/delete_launcher"
+        android:visibility="invisible"
+        app:layout_constraintRight_toRightOf="@+id/folder2"
+        app:layout_constraintTop_toBottomOf="@+id/MenuBar" />
+
+    <Button
+        android:id="@+id/deleteFolder3"
+        android:layout_width="39dp"
+        android:layout_height="39dp"
+        android:layout_alignBaseline="@+id/deleteFolder2"
+        android:layout_alignBottom="@+id/deleteFolder2"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="0dp"
+        android:layout_marginTop="45dp"
+        android:background="@mipmap/delete_launcher"
+        android:visibility="invisible"
+        app:layout_constraintRight_toRightOf="@+id/folder3"
+        app:layout_constraintTop_toBottomOf="@+id/MenuBar" />
+
     <RelativeLayout
         android:id="@+id/bg"
-        android:layout_width="376dp"
-        android:layout_height="457dp"
+        android:layout_width="382dp"
+        android:layout_height="459dp"
         android:background="@android:color/holo_blue_bright"
+        app:layout_constraintTop_toBottomOf="@+id/MenuBar"
         tools:layout_editor_absoluteX="0dp"
-        tools:layout_editor_absoluteY="53dp">
+        tools:layout_editor_absoluteY="51dp">
 
     </RelativeLayout>
 
