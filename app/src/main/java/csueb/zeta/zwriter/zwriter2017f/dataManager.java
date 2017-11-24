@@ -17,7 +17,7 @@ import android.os.Environment;
 
 
 /**
- * Created by arbeitandy on 11/21/17.
+ * Created by andy on 11/21/17.
  */
 
 public class dataManager {
@@ -35,7 +35,8 @@ public class dataManager {
     }
 
     public void writeDummyFile(String folderName) {
-        String noteString = this.randomString(400);
+        // String noteString = this.randomString(400);
+        String noteString = xmasString;
         String name = this.genFileName();
         File file;
         String home = Environment.getExternalStorageDirectory().toString() + "/zwriter/" + folderName;
@@ -60,6 +61,22 @@ public class dataManager {
             sb.append( AB.charAt( rnd.nextInt(AB.length()) ) );
         return sb.toString();
     }
+
+    String xmasString = "\r\n"
+
+    +"          t"
+    +"         .#."
+    +"        .###."
+    +"       .#%##%."
+    +"       .%##%###."
+    +"      .##%###%##."
+    +"     .#%###%##%##."
+    +"           #"
+    +"           #"
+
+
+    ;
+
 
     String genFileName() {
         SimpleDateFormat formatter = new SimpleDateFormat("yyyy_MM_dd");
