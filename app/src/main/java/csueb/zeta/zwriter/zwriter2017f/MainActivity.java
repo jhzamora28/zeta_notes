@@ -44,7 +44,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         folder2 = (Button) findViewById(R.id.folder2);
         folder1 = (Button) findViewById(R.id.folder1);
 
-
         setting.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick (View view) {
@@ -53,7 +52,17 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 popupMenu.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
                     @Override
                     public boolean onMenuItemClick (MenuItem item) {
-                        backgroundUtil.changeBackgroundColor(item, bg);
+                        switch (item.getItemId()) {
+                            case R.id.backgroundcolor:
+                                backgroundUtil.changeBackgroundColor(item, bg);
+                                break;
+                            case R.id.contactinfo:
+                                sendEmail();
+                                break;
+                            default:
+                                break;
+                        }
+
                         Toast.makeText(MainActivity.this, "" + item.getTitle(), Toast.LENGTH_SHORT).show();
                         return true;
                     }
@@ -124,7 +133,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         folder1.setOnClickListener(this);
         folder2.setOnClickListener(this);
         folder3.setOnClickListener(this);
-
     }
 
     @Override
@@ -150,5 +158,15 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     }
 
 
+    public void sendEmail() {
+        Intent e = new Intent(Intent.ACTION_SEND);
+        e.setType("message/rfc822");
+        e.putExtra(Intent.EXTRA_EMAIL, new String[] {"zetagroup@csueb.edu"} );
+        e.putExtra(Intent.EXTRA_SUBJECT, "email from zwriter");
+        e.putExtra(Intent.EXTRA_TEXT, "Test");
+
+        startActivity(Intent.createChooser(e, "Please Choose a client: "));
+
+    }
 
 }
