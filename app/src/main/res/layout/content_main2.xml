@@ -8,4 +8,17 @@
     tools:context="csueb.zeta.zwriter.zwriter2017f.Main2Activity"
     tools:showIn="@layout/activity_main2">
 
+    <TextView
+        android:id="@+id/dummyText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:fontFamily="serif"
+        android:text="dummyText"
+        android:textColor="@android:color/holo_blue_dark"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 </android.support.constraint.ConstraintLayout>

@@ -6,6 +6,10 @@ import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
+import android.content.Intent;
+import android.widget.TextView;
+
+
 
 import com.example.wenjin.zwriter.R;
 
@@ -26,7 +30,19 @@ public class Main2Activity extends AppCompatActivity {
                         .setAction("Action", null).show();
             }
         });
+
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
+
+        // Get the Intent that started this activity and extract the string
+        Intent intent = getIntent();
+        String message = intent.getStringExtra(MainActivity.EXTRA_MESSAGE);
+
+
+        // Capture the layout's TextView and set the string as its text
+        View v = findViewById(R.id.dummyText);
+        TextView tv = (TextView) v;
+        tv.setText(message);
     }
 
 }
