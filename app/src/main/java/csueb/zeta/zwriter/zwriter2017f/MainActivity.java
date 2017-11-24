@@ -1,6 +1,7 @@
 package csueb.zeta.zwriter.zwriter2017f;
 
 
+import android.content.Context;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.PopupMenu;
@@ -49,7 +50,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         final String tutorialYoutubeId = "twZggnNbFqo";
         final String [] emailArray = new String[] {"zetagroup@csueb.edu"};
         final String emailSubject = new String("From Zwriter user");
-        final String emailText = new String("I am using the Zwriter and ...");
+        final String emailText = new String("I am using the Zwriter and on ") + this.getClass().getSimpleName();
         final String chooseClient = new String ("Please Choose a client: ");
 
 
@@ -66,10 +67,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                                 backgroundUtil.changeBackgroundColor(item, bg);
                                 break;
                             case R.id.contactinfo:
-                                sendEmail(emailArray, emailSubject, emailText, chooseClient);
+                                sendEmail(MainActivity.this, emailArray, emailSubject, emailText, chooseClient);
                                 break;
                             case R.id.tutorial:
-                                youtubeTutorial(tutorialYoutubeId);
+                                youtubeTutorial(MainActivity.this, tutorialYoutubeId);
                                 break;
                             default:
                                 break;
@@ -170,7 +171,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     }
 
 
-    public void sendEmail(String [] emailArray,
+    public void sendEmail(Context c,
+                          String [] emailArray,
                           String subject,
                           String text,
                           String chooseClient) {
@@ -180,18 +182,18 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         e.putExtra(Intent.EXTRA_SUBJECT, subject);
         e.putExtra(Intent.EXTRA_TEXT, text);
 
-        startActivity(Intent.createChooser(e, chooseClient ));
+        c.startActivity(Intent.createChooser(e, chooseClient ));
 
     }
 
-    public void youtubeTutorial(String id){
+    public void youtubeTutorial(Context c, String id){
         Intent appIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("vnd.youtube:" + id));
         Intent webIntent = new Intent(Intent.ACTION_VIEW,
                 Uri.parse("http://www.youtube.com/watch?v=" + id));
         try {
-            startActivity(appIntent);
+            c.startActivity(appIntent);
         } catch (ActivityNotFoundException ex) {
-            startActivity(webIntent);
+            c.startActivity(webIntent);
         }
     }
 
