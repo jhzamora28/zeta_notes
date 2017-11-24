@@ -14,7 +14,7 @@ import android.content.Intent;
 import com.example.wenjin.zwriter.R;
 
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
     Button setting;
     RelativeLayout bg;
@@ -121,16 +121,34 @@ public class MainActivity extends AppCompatActivity {
 
         });
 
-        folder1.setOnClickListener(new View.OnClickListener(){
-            @Override
-            public void onClick (View view) {
-                Intent intent = new Intent(view.getContext(), FileListActivity.class);
-                String message = "folder1";
-                intent.putExtra(EXTRA_MESSAGE, message);
-                startActivity(intent);
-            }
+        folder1.setOnClickListener(this);
+        folder2.setOnClickListener(this);
+        folder3.setOnClickListener(this);
 
-        });
     }
+
+    @Override
+    public void onClick (View view) {
+        String message = "";
+        switch (view.getId()) {
+            case R.id.folder1:
+                message = "folder1";
+                break;
+            case R.id.folder2:
+                message = "folder2";
+                break;
+            case R.id.folder3:
+                message = "folder3";
+                break;
+            default:
+                break;
+        }
+
+        Intent fileListIntent = new Intent(MainActivity.this, Main2Activity.class);
+        fileListIntent.putExtra(EXTRA_MESSAGE, message);
+        startActivity(fileListIntent);
+    }
+
+
 
 }
