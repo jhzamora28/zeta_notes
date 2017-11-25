@@ -7,6 +7,7 @@ import android.graphics.Color;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
@@ -74,7 +75,8 @@ public class Main2Activity extends AppCompatActivity {
         rvFiles = (RecyclerView) findViewById(R.id.file_list);
         layoutManager = new LinearLayoutManager(this);
         rvFiles.setLayoutManager(layoutManager);
-
+        rvFiles.addItemDecoration(new DividerItemDecoration(this,
+                DividerItemDecoration.VERTICAL));
         // adapter = new FileAdapter(fileList, getApplicationContext());
         // rv.setAdapter(adapter);
         rvFiles.setAdapter(new RecyclerView.Adapter <listViewHolder> () {
