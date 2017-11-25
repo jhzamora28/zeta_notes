@@ -2,6 +2,8 @@ package csueb.zeta.zwriter.zwriter2017f;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.graphics.Color;
+
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
@@ -54,6 +56,8 @@ public class Main2Activity extends AppCompatActivity {
         // tv: Capture the layout's TextView and set the string as text passed from previous
         View v = findViewById(R.id.dummyText);
         TextView tv = (TextView) v;
+        tv.setShadowLayer(1.2f,-3,3,Color.GRAY);
+
         tv.setText(message);
     }
 
@@ -90,6 +94,7 @@ public class Main2Activity extends AppCompatActivity {
                 TextView tv = (TextView) vh.itemView;
                 tv.setText(dummyFileList.get(position));
                 tv.setCompoundDrawablesWithIntrinsicBounds(R.drawable.ic_star, 0, 0, 0);
+                tv.setShadowLayer(1.2f,-3,3,Color.DKGRAY);
             }
 
             @Override
