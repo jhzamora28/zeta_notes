@@ -21,14 +21,6 @@ import java.util.List;
 
 public class Main2Activity extends AppCompatActivity {
 
-    private RecyclerView rvFiles;
-    private RecyclerView.Adapter adapter;
-    private RecyclerView.LayoutManager layoutManager;
-    // private List<String> fileList = new ArrayList<String>();
-
-    private List <String> dummyFileList = Arrays.asList("foo", "bar", "baz");
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -36,6 +28,13 @@ public class Main2Activity extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
+        displayFab();
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        displayTitle ();
+        displayFileList();
+
+    }
+    public void displayFab () {
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -46,18 +45,26 @@ public class Main2Activity extends AppCompatActivity {
             }
         });
 
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-
-
+    }
+    public void displayTitle (){
         // Get the Intent that started this activity and extract the string
         Intent intent = getIntent();
         String message = intent.getStringExtra(MainActivity.EXTRA_MESSAGE);
-
 
         // tv: Capture the layout's TextView and set the string as text passed from previous
         View v = findViewById(R.id.dummyText);
         TextView tv = (TextView) v;
         tv.setText(message);
+    }
+
+    public void displayFileList() {
+
+        RecyclerView rvFiles;
+        RecyclerView.Adapter adapter;
+        RecyclerView.LayoutManager layoutManager;
+        // private List<String> fileList = new ArrayList<String>();
+
+        final List <String> dummyFileList = Arrays.asList("foo", "bar", "baz","baz");
 
         // rv: file list
         rvFiles = (RecyclerView) findViewById(R.id.file_list);
