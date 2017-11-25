@@ -37,13 +37,15 @@ public class Main2Activity extends AppCompatActivity {
         displayFileList();
 
     }
+
+
     public void displayFab () {
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 // change to intent of creating a note
-                Snackbar.make(view, "Creating a note", Snackbar.LENGTH_LONG)
+                Snackbar.make(view, "Created some dummy notes", Snackbar.LENGTH_LONG)
                         .setAction("Action", null).show();
             }
         });
@@ -67,9 +69,12 @@ public class Main2Activity extends AppCompatActivity {
         RecyclerView rvFiles;
         RecyclerView.Adapter adapter;
         RecyclerView.LayoutManager layoutManager;
-        // private List<String> fileList = new ArrayList<String>();
 
-        final List <String> dummyFileList = Arrays.asList("foo", "bar", "baz","baz");
+        // #TODO change dummy name to current folder name
+        dataManager.genDummy("baz");
+        // final List<String> dummyFileList = Arrays.asList(dataManager.getFileList("baz"));
+        String [] aList = {"foooo", "baar", "bazzzz", "bzzzz\uD83D\uDCAF "};
+        final List<String> fileNameL = Arrays.asList(aList);
 
         // rv: file list
         rvFiles = (RecyclerView) findViewById(R.id.file_list);
@@ -94,14 +99,14 @@ public class Main2Activity extends AppCompatActivity {
             @Override
             public void onBindViewHolder(listViewHolder vh, int position) {
                 TextView tv = (TextView) vh.itemView;
-                tv.setText(dummyFileList.get(position));
+                tv.setText(fileNameL.get(position));
                 tv.setCompoundDrawablesWithIntrinsicBounds(R.drawable.ic_star, 0, 0, 0);
                 tv.setShadowLayer(1.2f,-3,3,Color.DKGRAY);
             }
 
             @Override
             public int getItemCount() {
-                return dummyFileList.size();
+                return fileNameL.size();
             }
         });
     }
