@@ -31,11 +31,12 @@ public class Main2Activity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main2);
+        // #TODO need to add a real listener to the back button in toolbar. will fix if we have time.
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         displayFab();
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         displayTitle ();
         displayFileList();
 
@@ -47,7 +48,7 @@ public class Main2Activity extends AppCompatActivity {
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                // change to intent of creating a note
+                // #TODO: change to intent of creating a note
                 Snackbar.make(view, "Created some dummy notes", Snackbar.LENGTH_LONG)
                         .setAction("Action", null).show();
             }
@@ -55,27 +56,23 @@ public class Main2Activity extends AppCompatActivity {
 
     }
     public void displayTitle (){
-        // Get the Intent that started this activity and extract the string
-        Intent intent = getIntent();
-        String message = intent.getStringExtra(MainActivity.EXTRA_MESSAGE);
 
         // tv: Capture the layout's TextView and set the string as text passed from previous
         View v = findViewById(R.id.dummyText);
         TextView tv = (TextView) v;
         tv.setShadowLayer(1.2f,-3,3,Color.GRAY);
 
-        tv.setText(message);
+        tv.setText(getFolderName());
     }
 
     public void displayFileList() {
+        String fn = getFolderName();
 
         RecyclerView rvFiles;
         RecyclerView.Adapter adapter;
         RecyclerView.LayoutManager layoutManager;
 
-        // #TODO change dummy name to current folder name
-
-        final List<String> fileNameL = Arrays.asList(dataManager.getFileList("baz"));
+        final List<String> fileNameL = Arrays.asList(dataManager.getFileList(fn));
 
         // rv: file list
         rvFiles = (RecyclerView) findViewById(R.id.file_list);
@@ -111,4 +108,9 @@ public class Main2Activity extends AppCompatActivity {
         });
     }
 
+    public String getFolderName() {
+        // Get the Intent that started this activity and extract the folderName
+        Intent intent = getIntent();
+        return intent.getStringExtra(MainActivity.EXTRA_MESSAGE);
+    }
 }
