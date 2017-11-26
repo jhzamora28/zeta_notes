@@ -19,13 +19,6 @@
             </intent-filter>
         </activity>
         <activity
-            android:name="csueb.zeta.zwriter.zwriter2017f.FileListActivity"
-            android:parentActivityName="csueb.zeta.zwriter.zwriter2017f.MainActivity">
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value="csueb.zeta.zwriter.zwriter2017f.MainActivity" />
-        </activity>
-        <activity
             android:name="csueb.zeta.zwriter.zwriter2017f.Main2Activity"
             android:label="@string/title_activity_main2"
             android:parentActivityName="csueb.zeta.zwriter.zwriter2017f.MainActivity"
