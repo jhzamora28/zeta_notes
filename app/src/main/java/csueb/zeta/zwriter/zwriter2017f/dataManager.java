@@ -156,7 +156,7 @@ public class dataManager {
             try {
                 oStream.write(xmasString.getBytes());          // #TODO use real noteString
             } catch (IOException e) {
-                e.printStackTrace();
+                Log.d("ERROR writing file", e.toString());
             } finally {
                 oStream.close();
             }

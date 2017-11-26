@@ -65,6 +65,13 @@ public class Main2Activity extends AppCompatActivity {
         tv.setText(getFolderName());
     }
 
+    public void displayNote(String noteName) {
+        View v = findViewById(R.id.dummyText);
+        TextView tv = (TextView) v;
+        tv.setShadowLayer(1.2f,-3,3,Color.GRAY);
+        tv.setText(dataManager.readNote(getFolderName(), noteName));
+    }
+
     public void displayFileList() {
         String fn = getFolderName();
 
