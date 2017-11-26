@@ -1,6 +1,7 @@
 package csueb.zeta.zwriter.zwriter2017f;
 
 import java.io.File;
+import java.io.FileFilter;
 import java.io.IOException;
 import java.io.FileNotFoundException;
 import java.io.FileInputStream;
@@ -12,6 +13,7 @@ import java.util.Date;
 
 
 import android.os.Environment;
+import android.util.Log;
 
 
 /**
@@ -19,23 +21,32 @@ import android.os.Environment;
  */
 
 public class dataManager {
+    public final static boolean DEBUG = false;
+
     /**
      * Usage:
      dm = new dataManager();
      fn = "foobar";
      File[] fileList = dm.getFileList(fn);
      **/
+    private static final String TAG = Main2Activity.class.getSimpleName();
+
 
     // generate a dummy folder and several dummy files inside
     public static void genDummy(String folderN) {
+        if (DEBUG)
+            Log.d("GENDUMMY", "folderN: " + folderN);
+
         createFolder(folderN);
         createFile(folderN, "baz note");
         createFile(folderN, "bar note");
-        createFile(folderN, randomString(900));
+        createFile(folderN, randomString(42));
         createFile(folderN, randomString(70));
     }
+
     // dummy function to get some empty folders
     public static void genDummyFolders() {
+
         createFolder("foobar");
         createFolder("barbaz");
         createFolder("bazfoo");
@@ -48,10 +59,20 @@ public class dataManager {
                 + "zwriter";
 
         File folder = new File(path);
-        return folder.list();
+        File[] folders = folder.listFiles(fileFilterFolder);
+
+        String [] aList = new String[folders.length];
+        for (int i=0; i < folders.length; i++)
+            aList[i] = folders[i].getName();
+
+        return aList;
+
     }
 
     public static String [] getFileList(String folderN) {
+        if (DEBUG)
+            Log.d("GET FILELIST", "folderN: " + folderN);
+
         genDummy(folderN);                           // #TODO remove this
         String path = Environment.getExternalStorageDirectory().toString()
                 + File.separator
@@ -60,7 +81,12 @@ public class dataManager {
                 + folderN;
 
         File folder = new File(path);
-        return folder.list();
+        File[] files = folder.listFiles(fileFilterTxt);
+        String [] aList = new String[files.length];
+        for (int i=0; i < files.length; i++)
+            aList[i] = files[i].getName();
+
+        return aList;
     }
 
     public static String readNote (String folderN, String fileN) {
@@ -92,6 +118,7 @@ public class dataManager {
     // file name will be automatically generated using genFileName()
     public static void createFile(String folderN, String noteString) {
         createFolder(folderN);
+
         String path = Environment.getExternalStorageDirectory().toString()
                 + File.separator
                 + "zwriter"
@@ -99,6 +126,11 @@ public class dataManager {
                 + folderN;
 
         String fileN = genFileName();
+        if (DEBUG) {
+            Log.d("CREATE FILE", "folderN: " + folderN +
+                    "\n noteString: " + noteString +
+                    "\n #filename: " + fileN + "\n");
+        }
 
         String xmasString = "\r\n"
 
@@ -137,15 +169,29 @@ public class dataManager {
     }
 
     public static void createFolder( String folderN) {
+        if (DEBUG)
+            Log.d("CREATING FOLDER", folderN);
+
         File fo = new File (Environment.getExternalStorageDirectory().toString()
                             + File.separator
                             + "zwriter"
                             + File.separator
-                            + folderN );
+                            , folderN );
 
         if(!fo.exists() && !fo.isDirectory())       // #TODO add error message
-                fo.mkdirs();
+        {
+            if (fo.mkdirs())
+                Log.d("MAKEDIRS", fo.getName());
+            else
+                Log.d("FAILED: MAKEDIRS", fo.getName());
 
+        }
+
+        if (DEBUG) {
+            String[] folders = getFolderList();
+            for (String f : folders)
+                Log.d("FOLDER CREATED", f);
+        }
     }
 
 
@@ -168,5 +214,19 @@ public class dataManager {
         return formatter.format(now) + Integer.toString(r) + ".txt";
     }
 
+    public static FileFilter fileFilterTxt = new FileFilter() {
+        public boolean accept(File file) {
+            //if the file extension is .txt return true, else false
+            if (file.getName().endsWith(".txt")) {
+                return true;
+            }
+            return false;
+        }
+    };
 
+    public static FileFilter fileFilterFolder = new FileFilter() {
+        public boolean accept(File file) {
+            return file.isDirectory();
+        }
+    };
 }

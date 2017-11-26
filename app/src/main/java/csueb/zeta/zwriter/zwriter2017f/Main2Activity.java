@@ -21,6 +21,9 @@ import com.example.wenjin.zwriter.R;
 import java.util.Arrays;
 import java.util.List;
 
+import android.util.Log;
+
+
 
 public class Main2Activity extends AppCompatActivity {
 
@@ -71,10 +74,8 @@ public class Main2Activity extends AppCompatActivity {
         RecyclerView.LayoutManager layoutManager;
 
         // #TODO change dummy name to current folder name
-        dataManager.genDummy("baz");
-        // final List<String> dummyFileList = Arrays.asList(dataManager.getFileList("baz"));
-        String [] aList = {"foooo", "baar", "bazzzz", "bzzzz\uD83D\uDCAF "};
-        final List<String> fileNameL = Arrays.asList(aList);
+
+        final List<String> fileNameL = Arrays.asList(dataManager.getFileList("baz"));
 
         // rv: file list
         rvFiles = (RecyclerView) findViewById(R.id.file_list);
@@ -82,8 +83,7 @@ public class Main2Activity extends AppCompatActivity {
         rvFiles.setLayoutManager(layoutManager);
         rvFiles.addItemDecoration(new DividerItemDecoration(this,
                 DividerItemDecoration.VERTICAL));
-        // adapter = new FileAdapter(fileList, getApplicationContext());
-        // rv.setAdapter(adapter);
+
         rvFiles.setAdapter(new RecyclerView.Adapter <listViewHolder> () {
 
             @Override
