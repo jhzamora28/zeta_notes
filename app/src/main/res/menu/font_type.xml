@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Kevin Dyer -->
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/fontTypeDroidSerif"
+        android:title="Droid Serif" />
+    <item
+        android:id="@+id/fontTypeDroidSans"
+        android:title="Droid Sans" />
+    <item
+        android:id="@+id/fontTypeWingdings"
+        android:title="Wingdings" />
+</menu>
