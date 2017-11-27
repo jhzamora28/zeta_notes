@@ -27,6 +27,14 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="csueb.zeta.zwriter.zwriter2017f.MainActivity" />
         </activity>
+        <activity
+            android:name="csueb.zeta.zwriter.zwriter2017f.EditActivity"
+            android:parentActivityName="csueb.zeta.zwriter.zwriter2017f.Main2Activity"
+            android:theme="@style/AppTheme.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="csueb.zeta.zwriter.zwriter2017f.Main2Activity" />
+        </activity>
 
     </application>
 

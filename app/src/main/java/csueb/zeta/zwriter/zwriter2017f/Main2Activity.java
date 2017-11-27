@@ -51,6 +51,9 @@ public class Main2Activity extends AppCompatActivity {
                 // #TODO: change to intent of creating a note
                 Snackbar.make(view, "Created some dummy notes", Snackbar.LENGTH_LONG)
                         .setAction("Action", null).show();
+                Intent fileListIntent = new Intent(Main2Activity.this, EditActivity.class);
+   //           fileListIntent.putExtra(Main2Activity.EXTRA_MESSAGE, message);
+                startActivity(fileListIntent);
             }
         });
 
